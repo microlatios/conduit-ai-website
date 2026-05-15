@@ -6,6 +6,7 @@
 <title>Conduit.AI — Warm & Approachable</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -119,6 +120,8 @@ textarea { resize: vertical; min-height: 80px; }
 select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23FAFAF6' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; }
 select option { background: var(--fg); }
 .form-grid .btn-primary { margin-top: 8px; width: 100%; padding: 16px; font-size: 17px; }
+.honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
+.turnstile-wrap { display: flex; justify-content: center; margin-top: 4px; }
 .form-status { display: none; margin-top: 20px; padding: 16px 18px; border-radius: 12px; font-size: 15px; line-height: 1.55; }
 .form-status.show { display: block; }
 .form-status.success { color: #233428; background: #E8EDE8; border: 1px solid rgba(122,155,126,.35); }
@@ -278,6 +281,8 @@ footer { text-align: center; padding: 40px 0; font-size: 14px; color: var(--fg-m
     <div class="full"><label>Biggest Challenge</label><textarea name="biggestChallenge" placeholder="What's been the hardest part of your search?"></textarea></div>
     <div><label>How Did You Hear About Us?</label><select name="heardAbout"><option value="">Select…</option><option>LinkedIn</option><option>Twitter / X</option><option>Friend or colleague</option><option>Newsletter</option><option>Google search</option><option>Other</option></select></div>
     <div></div>
+    <div class="honeypot" aria-hidden="true"><label>Website</label><input type="text" name="website" autocomplete="off" tabindex="-1"></div>
+    <div class="full turnstile-wrap"><div class="cf-turnstile" data-sitekey="0x4AAAAAADPtusmxXysOnRwL"></div></div>
     <div class="full"><button type="submit" class="btn btn-primary" style="width:100%;padding:16px;font-size:17px;">Get Started</button></div>
   </form>
   <iframe name="form-submit-frame" title="Form submission" style="display:none;"></iframe>
@@ -350,9 +355,22 @@ signupForm?.addEventListener('submit', event => {
   event.preventDefault();
 
   const submitButton = signupForm.querySelector('button[type="submit"]');
+  const honeypot = signupForm.querySelector('input[name="website"]');
+  const turnstileResponse = signupForm.querySelector('input[name="cf-turnstile-response"]');
 
   formStatus.className = 'form-status';
   formStatus.textContent = '';
+
+  if (honeypot?.value) {
+    showFormStatus('success', "Thank you. Your application has been received, and I'll be in touch if I feel I'm best positioned to help.");
+    return;
+  }
+
+  if (!turnstileResponse?.value) {
+    showFormStatus('error', 'Please complete the quick human check before submitting.');
+    return;
+  }
+
   formSubmitting = true;
   submitButton.disabled = true;
   submitButton.textContent = 'Submitting...';
