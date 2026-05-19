@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conduit.AI — Warm & Approachable</title>
+<title>conduit.ai | connecting AI to your next role</title>
+<meta name="description" content="Conduit helps job seekers use AI to build tailored application materials, role-specific plans, and proof-of-value assets that show what they can do before they are hired.">
+<meta property="og:title" content="conduit.ai | connecting AI to your next role">
+<meta property="og:description" content="Use AI to show how you think, how you prepare, and how you can contribute from day one.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -39,8 +44,6 @@ nav .wrap { max-width: none; padding-left: 32px; padding-right: 32px; }
 .hero h1 { font-size: clamp(36px, 5.5vw, 60px); max-width: 780px; margin: 0 auto 20px; }
 .hero h1 em { font-style: italic; color: var(--accent); }
 .hero .sub { font-size: 19px; color: var(--fg-muted); max-width: 540px; margin: 0 auto 36px; text-wrap: pretty; }
-.hero .priority-note { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; font-size: 14px; color: var(--sage-deep); background: var(--bg-sage); padding: 10px 20px; border-radius: 100px; font-weight: 600; }
-.priority-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sage); }
 
 /* PROBLEM */
 .problem h2 { font-size: clamp(28px, 4vw, 44px); text-align: center; margin-bottom: 16px; }
@@ -140,6 +143,7 @@ button:disabled { cursor: wait; opacity: .72; transform: none; }
 
 /* FOOTER */
 footer { text-align: center; padding: 40px 0; font-size: 14px; color: var(--fg-muted); border-top: 1px solid rgba(0,0,0,.06); }
+footer .footer-tagline { margin-top: 8px; color: var(--sage-deep); font-weight: 600; }
 
 @media (max-width: 640px) {
   .skill-cards, .skill-how { grid-template-columns: 1fr; }
@@ -161,7 +165,6 @@ footer { text-align: center; padding: 40px 0; font-size: 14px; color: var(--fg-m
   <h1>You're qualified. The job market just can't <em>see it</em> yet.</h1>
   <p class="sub">I help job seekers use AI to build a go-to-market plan that proves your value before the interview even starts. Don't just talk about what you did. Show them what you're going to do.</p>
   <a href="#signup" class="btn btn-primary btn-big">Start Your Application Arsenal</a>
-  <br><span class="priority-note"><span class="priority-dot"></span> Priority access for those who've been searching longest</span>
 </div></section>
 
 <section class="problem"><div class="wrap">
@@ -275,10 +278,9 @@ footer { text-align: center; padding: 40px 0; font-size: 14px; color: var(--fg-m
     <div><label>Target Role</label><select name="targetRole" required><option value="">Select…</option><option>Sales</option><option>Marketing</option><option>Business Development</option><option>Partnerships</option><option>Growth</option><option>Product Marketing</option><option>Revenue Operations</option><option>Other</option></select></div>
     <div><label>Target Industry</label><select name="targetIndustry" required><option value="">Select…</option><option>SaaS / Software</option><option>Fintech</option><option>Banking / Financial Services</option><option>Healthcare / Biotech</option><option>E-commerce / Retail</option><option>Media / Entertainment</option><option>Consulting / Professional Services</option><option>Telecommunications</option><option>Manufacturing / Industrial</option><option>Real Estate / PropTech</option><option>Education / EdTech</option><option>Energy / Cleantech</option><option>Logistics / Supply Chain</option><option>Other</option></select></div>
     <div><label>Salary Range</label><select name="salaryRange"><option value="">Select (USD)…</option><option>Under $60k</option><option>$60k – $80k</option><option>$80k – $100k</option><option>$100k – $120k</option><option>$120k – $150k</option><option>$150k – $200k</option><option>$200k – $250k</option><option>$250k – $300k</option><option>$300k – $400k</option><option>$400k – $500k</option><option>$500k+</option></select></div>
-    <div class="full"><label>Experience Summary</label><textarea name="experienceSummary" placeholder="2-3 sentences about your background and what makes you great"></textarea></div>
     <div><label>Time Searching</label><select name="timeSearching"><option value="">Select…</option><option>Just started</option><option>1 – 3 months</option><option>3 – 6 months</option><option>6 – 9 months</option><option>9 – 12 months</option><option>1 – 1.5 years</option><option>1.5 – 2 years</option><option>More than 2 years</option></select></div>
     <div><label>AI Familiarity</label><select name="aiFamiliarity"><option value="">Select…</option><option>Conversational — I use ChatGPT for everyday questions</option><option>Applied — I use AI to draft emails, documents, and presentations</option><option>Productive — I use AI to build decks, reports, and job application materials</option><option>Systematic — I use skills.md files and repeatable AI workflows</option><option>Builder — I build and ship products with AI</option></select></div>
-    <div class="full"><label>Biggest Challenge</label><textarea name="biggestChallenge" placeholder="What's been the hardest part of your search?"></textarea></div>
+    <div class="full"><label>Where Are You in Your Search?</label><select name="biggestChallenge"><option value="">Select…</option><option>Applying but not getting enough interviews</option><option>Interviewing but not receiving offers yet</option></select></div>
     <div><label>How Did You Hear About Us?</label><select name="heardAbout"><option value="">Select…</option><option>LinkedIn</option><option>Twitter / X</option><option>Friend or colleague</option><option>Newsletter</option><option>Google search</option><option>Other</option></select></div>
     <div></div>
     <div class="honeypot" aria-hidden="true"><label>Website</label><input type="text" name="website" autocomplete="off" tabindex="-1"></div>
@@ -293,7 +295,7 @@ footer { text-align: center; padding: 40px 0; font-size: 14px; color: var(--fg-m
 <section class="faq"><div class="wrap">
   <h2>FAQ</h2>
   <div class="faq-list">
-    <div class="faq-item"><div class="faq-q">Is this a paid service?</div><div class="faq-a"><p>Yes. Conduit is a paid, hands-on service built around your background, target roles, and the companies you want to reach. I'm reviewing early access applications first so I can understand who I'm best positioned to help. Then we'll have a call to evaluate if this is a good fit for both of us before moving forward, and I'll share the scope and pricing clearly before you commit to anything.</p></div></div>
+    <div class="faq-item"><div class="faq-q">Is this a paid service?</div><div class="faq-a"><p>Long term, yes. Conduit is being built as a paid, hands-on service around your background, target roles, and the companies you want to reach. Right now, selected early-access pilot spots are available at no cost in exchange for honest feedback. If you're open to being an early pilot user, sign up and we'll have a call to evaluate whether this is the right fit for both of us before moving forward.</p></div></div>
     <div class="faq-item"><div class="faq-q">Do I need to be technical or know AI?</div><div class="faq-a"><p>Not at all. You bring the career context; I handle everything on the AI and strategy side. If you can fill out the form above, you're all set.</p></div></div>
     <div class="faq-item"><div class="faq-q">Is this only for go-to-market roles?</div><div class="faq-a"><p>GTM roles are my sweet spot — Sales, Marketing, BD, Partnerships, Growth — but the core methodology (showing your value before you're hired) works for any role.</p></div></div>
     <div class="faq-item"><div class="faq-q">Can't I just do this with ChatGPT?</div><div class="faq-a"><p>Anyone can prompt a chatbot. The difference is knowing what to build, how to frame it for the specific company and role, and how to present it in a way that changes the conversation. I bring the strategy and the playbook. AI is just the engine. Technically, anyone can do what I'm doing. The difference is almost nobody is doing it, and what's important is learning how, which is what I'm here for.</p></div></div>
@@ -305,6 +307,7 @@ footer { text-align: center; padding: 40px 0; font-size: 14px; color: var(--fg-m
 
 <footer><div class="wrap">
   <p>© 2026 conduit.ai</p>
+  <p class="footer-tagline">connecting AI to your next role</p>
 </div></footer>
 
 <script>
